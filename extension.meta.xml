@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension id="editor_for_symphony" status="released" xmlns="http://getsymphony.com/schemas/extension/1.0">
+	<name>Editor for Symphony CMS</name>
+	<description>Adds Editor, the markdown editor, by Hsiaoming Yang, github.com/lepture/editor, to every markdown textarea field on every entry page.</description>
+	<repo type="github">https://github.com/bzerangue/editor_for_symphony</repo>
+	<types>
+		<type>Text Formatters</type>
+	</types>
+	<authors>
+		<author>
+			<name github="bzerangue" symphony="bzerangue">Brian Zerangue</name>
+			<website>http://brianzerangue.com</website>
+		</author>
+	</authors>
+	<releases>
+		<release version="1.0" date="2013-09-12" min="2.3">
+			First officially released version.
+		</release>
+	</releases>
+</extension>
