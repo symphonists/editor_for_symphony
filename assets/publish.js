@@ -1,2 +1,4 @@
-var editor = new Editor({element: document.querySelector('textarea[class*=markdown]')});
-editor.render();
+jQuery(document).ready(function() {
+    var editor = new Editor({element: jQuery.find('textarea[class*=markdown]')[0]});
+    editor.render();
+});

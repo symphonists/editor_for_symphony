@@ -6726,6 +6726,7 @@ var shortcuts = {
   'Cmd-B': toggleBold,
   'Cmd-I': toggleItalic,
   'Cmd-K': drawLink,
+  'Cmd-M': drawEmailLink,
   'Cmd-Alt-I': drawImage,
   "Cmd-'": toggleBlockquote,
   'Cmd-Alt-L': toggleOrderedList,
@@ -6946,6 +6947,15 @@ function drawLink(editor) {
   _replaceSelection(cm, stat.link, '[', '](http://)');
 }
 
+/**
+ * Action for drawing a link.
+ */
+function drawEmailLink(editor) {
+  var cm = editor.codemirror;
+  var stat = getState(cm);
+  _replaceSelection(cm, stat.link, '[', '](mailto:)');
+}
+
 
 /**
  * Action for drawing an img.
@@ -7037,6 +7047,7 @@ var toolbar = [
   '|',
 
   {name: 'link', action: drawLink},
+  {name: 'emaillink', action: drawEmailLink},
   {name: 'image', action: drawImage},
   '|',
 
@@ -7234,6 +7245,7 @@ Editor.toggleBlockquote = toggleBlockquote;
 Editor.toggleUnOrderedList = toggleUnOrderedList;
 Editor.toggleOrderedList = toggleOrderedList;
 Editor.drawLink = drawLink;
+Editor.drawEmailLink = drawEmailLink;
 Editor.drawImage = drawImage;
 Editor.undo = undo;
 Editor.redo = redo;
@@ -7259,6 +7271,9 @@ Editor.prototype.toggleOrderedList = function() {
 };
 Editor.prototype.drawLink = function() {
   drawLink(this);
+};
+Editor.prototype.drawEmailLink = function() {
+  drawEmailLink(this);
 };
 Editor.prototype.drawImage = function() {
   drawImage(this);
