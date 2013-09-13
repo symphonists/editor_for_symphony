@@ -13,8 +13,8 @@
 		</author>
 	</authors>
 	<releases>
-		<release version="1.0" date="2013-09-12" min="2.3">
-			First officially released version.
+		<release version="0.1" date="2013-09-13" min="2.3">
+			Alpha version. Not working yet. Ran into javascript issue.
 		</release>
 	</releases>
 </extension>
