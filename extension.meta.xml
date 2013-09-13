@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension id="editor_for_symphony" status="experimental" xmlns="http://getsymphony.com/schemas/extension/1.0">
-	<name>Editor for Symphony CMS</name>
+	<name>Editor for Symphony</name>
 	<description>Adds Editor, the markdown editor, by Hsiaoming Yang, github.com/lepture/editor, to every markdown textarea field on every entry page.</description>
 	<repo type="github">https://github.com/bzerangue/editor_for_symphony</repo>
 	<types>
