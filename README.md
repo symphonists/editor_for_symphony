@@ -13,6 +13,6 @@ This extension automatically adds a markdown editor to every Markdown textarea f
 
 ## Credits
 
-This a port of the Editor, the markdown editor, by Hsiaoming Yang <https://github.com/lepture/editor>.
+This a port of **Editor**, the markdown editor, by Hsiaoming Yang <https://github.com/lepture/editor>.
 
 Basic demo of Editor, <http://lab.lepture.com/editor/>
