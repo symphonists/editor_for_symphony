@@ -7050,7 +7050,9 @@ var toolbar = [
   {name: 'emaillink', action: drawEmailLink},
   {name: 'image', action: drawImage},
   '|',
-
+  {name: 'undo', action: undo},
+  {name: 'redo', action: redo},
+  '|',
   {name: 'info', action: 'http://lab.lepture.com/editor/markdown'},
   'preview',
   {name: 'fullscreen', action: toggleFullScreen}
