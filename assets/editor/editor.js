@@ -7054,7 +7054,7 @@ var toolbar = [
   {name: 'redo', action: redo},
   '|',
   {name: 'info', action: 'http://lab.lepture.com/editor/markdown'},
-  'preview',
+  //'preview',
   {name: 'fullscreen', action: toggleFullScreen}
 ]
 
