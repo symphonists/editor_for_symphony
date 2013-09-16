@@ -22,6 +22,6 @@
 (function ($, undefined) {
   'use strict';
   $(function () {
-    $('textarea[class*=markdown').editorify();
+    $('textarea.markdown, textarea.markdown_extra, textarea.markdown_extra_with_smartypants, textarea.markdown_with_purifier').editorify();
   });
 }(this.jQuery));
