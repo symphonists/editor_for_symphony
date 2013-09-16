@@ -1,7 +1,7 @@
 (function ($, Editor, undefined) {
   'use strict';
   if (typeof Editor === undefined) {
-    throw new Error('Editor mmust be loaded beforehand this plugin');
+    throw new Error('Editor must be loaded beforehand this plugin');
   }
 
   $.fn.editorify = function (options) {
@@ -16,7 +16,6 @@
   };
 
 }(this.jQuery, this.Editor));
-
 
 
 (function ($, undefined) {
