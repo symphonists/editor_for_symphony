@@ -42,6 +42,10 @@
     background: #fff;
 }
 
+.invalid .CodeMirror {
+	color: #000;
+}
+
 .editor-statusbar {
     font-size: 1em;
 }
