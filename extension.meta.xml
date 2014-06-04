@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<extension id="editor_for_symphony" status="experimental" xmlns="http://getsymphony.com/schemas/extension/1.0">
+<extension id="editor_for_symphony" status="released" xmlns="http://getsymphony.com/schemas/extension/1.0">
 	<name>Editor for Symphony</name>
-	<description>Adds Editor, the markdown editor, by Hsiaoming Yang, github.com/lepture/editor, to every markdown textarea field on every entry page.</description>
-	<repo type="github">https://github.com/bzerangue/editor_for_symphony</repo>
+	<description>Adds Editor, the markdown editor by Hsiaoming Yang (github.com/lepture/editor), to every markdown textarea field on every entry page.</description>
+	<repo type="github">https://github.com/brockpetrie/editor_for_symphony</repo>
 	<types>
 		<type>Text Formatters</type>
 	</types>
@@ -11,8 +11,17 @@
 			<name github="bzerangue" symphony="bzerangue">Brian Zerangue</name>
 			<website>http://brianzerangue.com</website>
 		</author>
+		<author>
+			<name github="brockpetrie" symphony="brockpetrie">Brock Petrie</name>
+			<website>http://www.brockpetrie.com</website>
+		</author>
 	</authors>
 	<releases>
+		<release version="0.3" date="2014-06-02" min="2.4">
+			- Preview pane working; fixed by including Marked (https://github.com/chjj/marked)
+			- Updated to latest spec of fullscreen API, fullscreen now working
+			- Switched to FontAwesome icons
+		</release>
 		<release version="0.2" date="2013-09-16" min="2.3">
 			- @iwyg fixed the multiple instantiation of the editor; can apply to multiple textareas
 			- activated undo and redo functionality.
