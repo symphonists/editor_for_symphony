@@ -1,6 +1,6 @@
 # Editor for Symphony
 
-Adds Editor, the markdown editor, by Hsiaoming Yang, github.com/lepture/editor, to every markdown textarea field on every entry page.
+Adds Editor (<https://github.com/lepture/editor>) to every markdown textarea field on every Symphony entry page.
 
 ## Installation
 
@@ -9,10 +9,10 @@ Adds Editor, the markdown editor, by Hsiaoming Yang, github.com/lepture/editor, 
 
 ## Usage
 
-This extension automatically adds a markdown editor to every Markdown textarea field on every entry page.
+This extension automatically adds a markdown editor to every Markdown-enabled textarea field on every Symphony entry page.
 
 ## Credits
 
-This a port of **Editor**, the markdown editor, by Hsiaoming Yang <https://github.com/lepture/editor>.
+This a port of **Editor**, the markdown editor by Hsiaoming Yang (<https://github.com/lepture/editor>).
 
-Basic demo of Editor, <http://lab.lepture.com/editor/>
+Basic demo of Editor: <http://lab.lepture.com/editor/>

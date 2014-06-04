@@ -24,12 +24,16 @@
 }
 
 .editor-toolbar:before, .editor-toolbar:after {
-    height: 0;
+    display: none;
+}
+
+.editor-preview {
+    z-index: 4;
 }
 
 .CodeMirror {
     outline: none;
-    padding: 6px 3px 2px 3px;
+    padding: 6px 6px 2px;
     border: 1px solid rgba(0, 0, 0, 0.25);
     border-width: 0px 1px 1px 1px;
     -webkit-border-bottom-right-radius: 2px;
