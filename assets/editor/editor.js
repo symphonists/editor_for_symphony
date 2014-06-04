@@ -7981,24 +7981,30 @@ function toggleFullScreen(editor) {
   var el = editor.codemirror.getWrapperElement();
 
   // https://developer.mozilla.org/en-US/docs/DOM/Using_fullscreen_mode
+  // http://www.sitepoint.com/use-html5-full-screen-api/
+
   var doc = document;
-  var isFull = doc.fullScreen || doc.mozFullScreen || doc.webkitFullScreen;
+  var isFull = doc.fullscreenElement || doc.webkitFullscreenElement || doc.mozFullScreenElement || doc.msFullscreenElement;
   var request = function() {
-    if (el.requestFullScreen) {
-      el.requestFullScreen();
+    if (el.requestFullscreen) {
+      el.requestFullscreen();
     } else if (el.mozRequestFullScreen) {
       el.mozRequestFullScreen();
-    } else if (el.webkitRequestFullScreen) {
-      el.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+    } else if (el.webkitRequestFullscreen) {
+      el.webkitRequestFullscreen();
+    } else if (el.msRequestFullscreen) {
+      el.msRequestFullscreen();
     }
   };
   var cancel = function() {
-    if (doc.cancelFullScreen) {
-      doc.cancelFullScreen();
+    if (doc.exitFullscreen) {
+      doc.exitFullscreen();
     } else if (doc.mozCancelFullScreen) {
       doc.mozCancelFullScreen();
-    } else if (doc.webkitCancelFullScreen) {
-      doc.webkitCancelFullScreen();
+    } else if (doc.webkitExitFullscreen) {
+      doc.webkitExitFullscreen();
+    } else if (doc.msExitFullscreen) {
+      doc.msExitFullscreen();
     }
   };
   if (!isFull) {
@@ -8257,9 +8263,15 @@ var toolbar = [
   '|',
 
   {name: 'info', action: 'http://lab.lepture.com/editor/markdown'},
-  {name: 'preview', action: togglePreview},
-  {name: 'fullscreen', action: toggleFullScreen}
+  {name: 'preview', action: togglePreview}
 ];
+// Add fullscreen toggle if browser supports it
+if (document.fullscreenEnabled || 
+    document.webkitFullscreenEnabled || 
+    document.mozFullScreenEnabled ||
+    document.msFullscreenEnabled) {
+    toolbar.push({name: 'fullscreen', action: toggleFullScreen});
+}
 
 /**
  * Interface of Editor.
