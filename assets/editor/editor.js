@@ -5438,7 +5438,7 @@ var CodeMirror = (function() {
         if (/\w/.test(str.charAt(i - 2)) && /[^\-?\.]/.test(str.charAt(i))) return true;
         if (i > 2 && /[\d\.,]/.test(str.charAt(i - 2)) && /[\d\.,]/.test(str.charAt(i))) return false;
       }
-      return /[~!#%&*)=+}\]|\"\.>,:;][({[<]|-[^\-?\.\u2010-\u201f\u2026]|\?[\w~`@#$%\^&*(_=+{[|><]|…[\w~`@#$%\^&*(_=+{[><]/.test(str.slice(i - 1, i + 1));
+      return /[~!#%&*)=+}\]|\"\.>,:;][({[<]|-[^\-?\.\u2010-\u201f\u2026]|\?[\w~`@#$%\^&*(_=+{[|><]|â€¦[\w~`@#$%\^&*(_=+{[><]/.test(str.slice(i - 1, i + 1));
     };
 
   var knownScrollbarWidth;
@@ -6726,7 +6726,6 @@ var shortcuts = {
   'Cmd-B': toggleBold,
   'Cmd-I': toggleItalic,
   'Cmd-K': drawLink,
-  'Cmd-M': drawEmailLink,
   'Cmd-Alt-I': drawImage,
   "Cmd-'": toggleBlockquote,
   'Cmd-Alt-L': toggleOrderedList,
@@ -6758,9 +6757,9 @@ function createIcon(name, options) {
   if (shortcut) {
     shortcut = fixShortcut(shortcut);
     el.title = shortcut;
-    el.title = el.title.replace('Cmd', '⌘');
+    el.title = el.title.replace('Cmd', 'âŒ˜');
     if (isMac) {
-      el.title = el.title.replace('Alt', '⌥');
+      el.title = el.title.replace('Alt', 'âŒ¥');
     }
   }
 
@@ -6851,7 +6850,8 @@ function toggleBold(editor) {
   var stat = getState(cm);
 
   var text;
-  var start = end = '**';
+  var start = '**';
+  var end = '**';
 
   var startPoint = cm.getCursor('start');
   var endPoint = cm.getCursor('end');
@@ -6885,11 +6885,12 @@ function toggleItalic(editor) {
   var stat = getState(cm);
 
   var text;
-  var start = end = '*';
+  var start = '*';
+  var end = '*';
 
   var startPoint = cm.getCursor('start');
   var endPoint = cm.getCursor('end');
-  if (stat.bold) {
+  if (stat.italic) {
     text = cm.getLine(startPoint.line);
     start = text.slice(0, startPoint.ch);
     end = text.slice(startPoint.ch);
@@ -6947,15 +6948,6 @@ function drawLink(editor) {
   _replaceSelection(cm, stat.link, '[', '](http://)');
 }
 
-/**
- * Action for drawing a link.
- */
-function drawEmailLink(editor) {
-  var cm = editor.codemirror;
-  var stat = getState(cm);
-  _replaceSelection(cm, stat.link, '[', '](mailto:)');
-}
-
 
 /**
  * Action for drawing an img.
@@ -6986,6 +6978,36 @@ function redo(editor) {
   cm.focus();
 }
 
+/**
+ * Preview action.
+ */
+function togglePreview(editor) {
+  var toolbar = editor.toolbar.preview;
+  var parse = editor.constructor.markdown;
+  var cm = editor.codemirror;
+  var wrapper = cm.getWrapperElement();
+  var preview = wrapper.lastChild;
+  if (!/editor-preview/.test(preview.className)) {
+    preview = document.createElement('div');
+    preview.className = 'editor-preview';
+    wrapper.appendChild(preview);
+  }
+  if (/editor-preview-active/.test(preview.className)) {
+    preview.className = preview.className.replace(
+      /\s*editor-preview-active\s*/g, ''
+    );
+    toolbar.className = toolbar.className.replace(/\s*active\s*/g, '');
+  } else {
+    /* When the preview button is clicked for the first time,
+     * give some time for the transition from editor.css to fire and the view to slide from right to left,
+     * instead of just appearing.
+     */
+    setTimeout(function() {preview.className += ' editor-preview-active'}, 1);
+    toolbar.className += ' active';
+  }
+  var text = cm.getValue();
+  preview.innerHTML = parse(text);
+}
 
 function _replaceSelection(cm, active, start, end) {
   var text;
@@ -7005,7 +7027,7 @@ function _replaceSelection(cm, active, start, end) {
   }
   cm.setSelection(startPoint, endPoint);
   cm.focus();
-};
+}
 
 
 function _toggleLine(cm, name) {
@@ -7034,7 +7056,24 @@ function _toggleLine(cm, name) {
     })(i);
   }
   cm.focus();
-};
+}
+
+
+/* The right word count in respect for CJK. */
+function wordCount(data) {
+  var pattern = /[a-zA-Z0-9_\u0392-\u03c9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+/g;
+  var m = data.match(pattern);
+  var count = 0;
+  if( m === null ) return count;
+  for (var i = 0; i < m.length; i++) {
+    if (m[i].charCodeAt(0) >= 0x4E00) {
+      count += m[i].length;
+    } else {
+      count += 1;
+    }
+  }
+  return count;
+}
 
 var toolbar = [
   {name: 'bold', action: toggleBold},
@@ -7047,16 +7086,13 @@ var toolbar = [
   '|',
 
   {name: 'link', action: drawLink},
-  {name: 'emaillink', action: drawEmailLink},
   {name: 'image', action: drawImage},
   '|',
-  {name: 'undo', action: undo},
-  {name: 'redo', action: redo},
-  '|',
+
   {name: 'info', action: 'http://lab.lepture.com/editor/markdown'},
-  //'preview',
+  {name: 'preview', action: togglePreview},
   {name: 'fullscreen', action: toggleFullScreen}
-]
+];
 
 /**
  * Interface of Editor.
@@ -7082,12 +7118,22 @@ function Editor(options) {
   if (this.element) {
     this.render();
   }
-};
+}
 
 /**
  * Default toolbar elements.
  */
 Editor.toolbar = toolbar;
+
+/**
+ * Default markdown render.
+ */
+Editor.markdown = function(text) {
+  if (window.marked) {
+    // use marked as markdown parser
+    return marked(text);
+  }
+};
 
 /**
  * Render editor to the given element.
@@ -7167,7 +7213,7 @@ Editor.prototype.createToolbar = function(items) {
         if (typeof item.action === 'function') {
           el.onclick = function(e) {
             item.action(self);
-          }
+          };
         } else if (typeof item.action === 'string') {
           el.href = item.action;
           el.target = '_blank';
@@ -7188,7 +7234,7 @@ Editor.prototype.createToolbar = function(items) {
         if (stat[key]) {
           el.className += ' active';
         } else {
-          el.className = el.className.replace(/\s*active\s*/g, '')
+          el.className = el.className.replace(/\s*active\s*/g, '');
         }
       })(key);
     }
@@ -7215,7 +7261,7 @@ Editor.prototype.createStatusbar = function(status) {
       if (name === 'words') {
         el.innerHTML = '0';
         cm.on('update', function() {
-          el.innerHTML = cm.getValue().length;
+          el.innerHTML = wordCount(cm.getValue());
         });
       } else if (name === 'lines') {
         el.innerHTML = '0';
@@ -7247,7 +7293,6 @@ Editor.toggleBlockquote = toggleBlockquote;
 Editor.toggleUnOrderedList = toggleUnOrderedList;
 Editor.toggleOrderedList = toggleOrderedList;
 Editor.drawLink = drawLink;
-Editor.drawEmailLink = drawEmailLink;
 Editor.drawImage = drawImage;
 Editor.undo = undo;
 Editor.redo = redo;
@@ -7273,9 +7318,6 @@ Editor.prototype.toggleOrderedList = function() {
 };
 Editor.prototype.drawLink = function() {
   drawLink(this);
-};
-Editor.prototype.drawEmailLink = function() {
-  drawEmailLink(this);
 };
 Editor.prototype.drawImage = function() {
   drawImage(this);
