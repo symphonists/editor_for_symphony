@@ -58,4 +58,10 @@
     font-size: 1em;
 }
 
+.editor-preview {
+    background: #fbfbfb;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 /* end Symphony-esque look for editor */
