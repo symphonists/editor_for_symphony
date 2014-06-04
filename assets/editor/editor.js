@@ -8438,12 +8438,12 @@ Editor.prototype.createStatusbar = function(status) {
       var el = document.createElement('span');
       el.className = name;
       if (name === 'words') {
-        el.innerHTML = '0';
+        el.innerHTML = wordCount(cm.getValue());
         cm.on('update', function() {
           el.innerHTML = wordCount(cm.getValue());
         });
       } else if (name === 'lines') {
-        el.innerHTML = '0';
+        el.innerHTML = cm.lineCount();
         cm.on('update', function() {
           el.innerHTML = cm.lineCount();
         });
