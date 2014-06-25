@@ -17,17 +17,21 @@
 		</author>
 	</authors>
 	<releases>
-		<release version="0.3" date="2014-06-02" min="2.4">
+		<release version="0.3.1" date="2014-06-25" min="2.4">
+			- Clean-up
+			- Fixed asset naming
+		</release>
+		<release version="0.3.0" date="2014-06-02" min="2.4">
 			- Preview pane working; fixed by including Marked (https://github.com/chjj/marked)
 			- Updated to latest spec of fullscreen API, fullscreen now working
 			- Switched to FontAwesome icons
 		</release>
-		<release version="0.2" date="2013-09-16" min="2.3">
+		<release version="0.2.0" date="2013-09-16" min="2.3">
 			- @iwyg fixed the multiple instantiation of the editor; can apply to multiple textareas
 			- activated undo and redo functionality.
 		</release>
-		<release version="0.1" date="2013-09-13" min="2.3">
-			Alpha version. Not working yet. Ran into javascript issue.
+		<release version="0.1.0" date="2013-09-13" min="2.3">
+			- Alpha version. Not working yet. Ran into javascript issue.
 		</release>
 	</releases>
 </extension>
