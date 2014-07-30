@@ -48,6 +48,8 @@
 	border-bottom-left-radius: 2px;
 	background: #fff;
 	outline: none;
+	height: auto;
+	min-height: 5em;
 }
 
 .invalid .CodeMirror {

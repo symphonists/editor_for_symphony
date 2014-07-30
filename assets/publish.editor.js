@@ -13,6 +13,8 @@
             editor = new Editor(options);
             $(element).data('editor', editor);
             editor.render();
+
+            $(element).nextAll('.CodeMirror').css('height', window.getComputedStyle(element)['height']);
         });
     };
 
