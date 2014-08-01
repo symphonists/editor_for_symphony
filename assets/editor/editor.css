@@ -62,8 +62,11 @@
 
 /* BASICS */
 
-.CodeMirror {
-  height: 300px;
+.primary .CodeMirror {
+  height: 450px;
+}
+.secondary .CodeMirror {
+  height: 150px;
 }
 .CodeMirror-scroll {
   /* Set scrolling behaviour here */
@@ -270,9 +273,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   .CodeMirror div.CodeMirror-cursor {
     visibility: hidden;
   }
-}
-.CodeMirror {
-  height: 450px;
 }
 :-webkit-full-screen {
   background: #f9f9f5;
