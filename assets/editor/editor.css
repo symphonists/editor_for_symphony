@@ -62,9 +62,6 @@
 
 /* BASICS */
 
-.CodeMirror {
-  height: 300px;
-}
 .CodeMirror-scroll {
   /* Set scrolling behaviour here */
   overflow: auto;
@@ -270,9 +267,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   .CodeMirror div.CodeMirror-cursor {
     visibility: hidden;
   }
-}
-.CodeMirror {
-  height: 450px;
 }
 :-webkit-full-screen {
   background: #f9f9f5;
