@@ -24,6 +24,6 @@
     'use strict';
 
     $(function() {
-        $('textarea[class*="markdown"]').editorify();
+        $('textarea[class*="markdown"], textarea[class*="commonmark"]').editorify();
     });
 }(this.jQuery));
