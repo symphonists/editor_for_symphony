@@ -8,13 +8,14 @@
     $.fn.editorify = function (options) {
         options = options || {};
         return this.each(function (index, element) {
+            var $element = $(element);
+            var height = $element.height();
             var editor;
             options.element = element;
             editor = new Editor(options);
-            $(element).data('editor', editor);
+            $element.data('editor', editor);
             editor.render();
-
-            $(element).nextAll('.CodeMirror').css('height', window.getComputedStyle(element)['height']);
+            $element.nextAll('.CodeMirror').css('height', height);
         });
     };
 
