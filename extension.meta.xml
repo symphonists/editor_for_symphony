@@ -3,7 +3,7 @@
 	<name>Editor for Symphony</name>
 	<description>Adds Editor, the markdown editor by Hsiaoming Yang (github.com/lepture/editor), to every markdown textarea field on every entry page.</description>
 	<repo type="github">https://github.com/symphonists/editor_for_symphony</repo>
-	<url type="issues">https://github.com/symphonists/editor_for_symphony</repo>
+	<url type="issues">https://github.com/symphonists/editor_for_symphony</url>
 	<types>
 		<type>Interface</type>
 		<type>Editor</type>
