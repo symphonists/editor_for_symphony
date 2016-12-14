@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<extension id="editor_for_symphony" status="experimental" xmlns="http://getsymphony.com/schemas/extension/1.0">
+<extension id="editor_for_symphony" status="released" xmlns="http://getsymphony.com/schemas/extension/1.0">
 	<name>Editor for Symphony</name>
 	<description>Adds Editor, the markdown editor by Hsiaoming Yang (github.com/lepture/editor), to every markdown textarea field on every entry page.</description>
 	<repo type="github">https://github.com/symphonists/editor_for_symphony</repo>
+	<url type="issues">https://github.com/symphonists/editor_for_symphony</repo>
 	<types>
 		<type>Interface</type>
+		<type>Editor</type>
+		<type>Markdown</type>
 	</types>
 	<authors>
 		<author>
@@ -17,6 +20,10 @@
 		</author>
 	</authors>
 	<releases>
+		<release version="1.0.0" date="2016-12-14" min="2.4" max="2.x.x">
+			- Minor javascript fixes
+			- Officially release the thing!
+		</release>
 		<release version="0.3.2" date="2015-01-06" min="2.4">
 			- Added commonmark support
 		</release>
