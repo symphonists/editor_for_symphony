@@ -66,4 +66,8 @@
 	background: #fbfbfb;
 }
 
+.editor-statusbar {
+	border: none;
+}
+
 /* end Symphony-esque look for editor */
