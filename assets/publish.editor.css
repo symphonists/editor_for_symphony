@@ -52,6 +52,11 @@
 	min-height: 5em;
 }
 
+.CodeMirror pre {
+	text-transform: none;
+	line-height: 1.8em;
+}
+
 .invalid .CodeMirror {
 	color: #000;
 }
