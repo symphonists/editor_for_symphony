@@ -36,7 +36,7 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 100%;
-	padding: 1rem 1.5rem;
+	padding: 1rem;
 	border: 1px solid #d3dce2;
 	border-width: 0 1px 1px 1px;
 	-webkit-border-bottom-right-radius: 5px;
@@ -51,9 +51,14 @@
 	min-height: 5em;
 }
 
+.CodeMirror-lines {
+	padding: 0;
+}
+
 .CodeMirror pre {
 	text-transform: none;
 	line-height: 1.8em;
+	padding: 0;
 }
 
 .invalid .CodeMirror {
