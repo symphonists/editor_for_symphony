@@ -1,7 +1,6 @@
 /* start Symphony-esque look for editor */
 
 .editor-toolbar {
-	margin-top: 1rem; /* slightly bigger margin as component is massive */
 	padding: 4px;
 	font-size: 14px;
 	border: 1px solid #d3dce2;
